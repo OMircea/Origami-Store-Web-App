@@ -1,0 +1,66 @@
+<article id="ar_ent_<%=locals.produs.idproduse %>" class="valid">
+
+    <a href="/prod/<%= locals.produs.idproduse %>">
+        <%= locals.produs.nume %>
+    </a>
+
+
+    <table>
+        <tr>
+            <th>Produs</th>
+            <th>Alte detalii</th>
+
+        </tr>
+        <tr>
+            <td>
+                <b>Categorie:</b>
+                <span class="categorie"><%=locals.produs.categorie %></span>
+            </td>
+            <td>
+                <b>Disponibilitate:</b>
+                <span class="disponibilitate"><%=locals.produs.disponibilitate ? "in stoc" : "nu e in stoc" %></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td class="imagine">
+                <img src="<%= produs.imagine %>" alt="<%= produs.nume %>" width="100" height="100" />
+            </td>
+            <td>
+                <b>Pret:</b>
+                <span class="pret"><%=locals.produs.pret %></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <b>Descriere: </b>
+                <span class="descriere"><%=locals.produs.descriere %></span>
+            </td>
+            <td>
+                <b>Culoare:</b>
+                <span class="culoare"><%=locals.produs.culoare %></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <b>Tehnici folosite:</b>
+                <span class="tehnici_folosite"><%=locals.produs.tehnici_folosite %></span>
+            </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <time datetime="<%=locals.produs.data_adaugarii %>"> <b>Data:</b><span class="data_adaugarii"><%=locals.produs.data_adaugarii.toISOString().substring(0, 10) %></span></time>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</article>

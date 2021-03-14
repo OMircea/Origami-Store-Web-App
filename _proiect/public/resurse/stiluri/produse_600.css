@@ -1,0 +1,21 @@
+#gr {
+    display:block;  
+  }
+
+  nav{
+    z-index:100;
+  }
+  #hamburger{
+    display:block;
+  }
+  ul.menu{
+    display:none;  
+  }
+  #ch-menu:checked~ul.menu{
+    display:block;  
+  
+  }
+  ul.menu>li{
+    width:100%;
+    background:black;
+  }

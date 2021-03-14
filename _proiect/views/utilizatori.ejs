@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<% include head %>
+
+
+    <body>
+
+        <% include header %>
+
+            <main>
+                <div class="afisaj">
+                    <h1>Utilizatori</h1>
+
+                    <table id="utilizatori">
+                        <tr>
+                            <th>id</th>
+                            <th>Username</th>
+                            <th>Nume</th>
+                            <th>Prenume</th>
+                            <th>Blocat</th>
+                            <th>Actiune</th>
+                        </tr>
+
+                        <% for (var i = 0; i < locals.utilizatori.length; i++) { 
+                        if(locals.utilizatori[i].rol=="comun"){
+                        %>
+                            <tr>
+                                <td>
+                                    <%= locals.utilizatori[i].id %>
+                                </td>
+                                <td>
+                                    <%= locals.utilizatori[i].username %>
+                                </td>
+                                <td>
+                                    <%= locals.utilizatori[i].nume %>
+                                </td>
+                                <td>
+                                    <%= locals.utilizatori[i].prenume %>
+                                </td>
+                                <td>
+                                    <%= locals.utilizatori[i].blocat %>
+                                </td>
+                                <td>
+                                    <button onclick="schimba('<%= locals.utilizatori[i].id %>')"><%= (locals.utilizatori[i].blocat == 0) ? "Blocheaza!" : "Deblocheaza!" %></button>
+                                </td>
+
+                            </tr>
+
+                            <% } %>
+                                <% } %>
+                    </table>
+                </div>
+            </main>
+
+            <form method="post" id="form">
+                <input type="hidden" id="input" name="nume_input">
+
+            </form>
+
+            <% include footer %>
+
+    </body>
+
+
+    <script>
+        function schimba(id) {
+            document.getElementById("input").value = id
+            document.getElementById("form").submit()
+        }
+    </script>
+
+</html>

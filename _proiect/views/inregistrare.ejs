@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<% include header %>
+
+    <body>
+        <% include head %>
+            <main>
+                <div class="afisaj">
+                    <h1>Inregistrare utilizator</h1>
+
+                    </p>
+                    <% if (locals.err !="") { %>
+                        <form method="post" class="date" action="/inreg" id="inreg" enctype="multipart/form-data" onsubmit="return validateForm()">
+                            <p>
+                                <label>
+                Username: <input type="text" name="username"  value="prof<%= Math.floor(Math.random()*100000) %>" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+                Nume: <input type="text" name="nume" value="Gogulescu" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+                Prenume: <input type="text" name="prenume" value="Gogu" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+                Parola: <input type="password" name="parola" id="parola" value="" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+                Reintroduceti parola: <input type="password" name="rparola" id="rparola" value="" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+                Email: <input type="text" name="email" value="oprea.mirceaioan@gmail.com" id="email" size="50" required>
+            </label>
+                            </p>
+                            <p>
+                                <label>
+            </label>
+                                <label>
+                Poza: <input type="file" name="poza">
+            </label>
+                            </p>
+                            <p>
+                                <input type="submit" value="Trimite">
+                                <input type="reset" value="Reseteaza">
+                            </p>
+                        </form>
+                        <% } %>
+                            <%- (locals.raspuns?locals.raspuns:"")+"<br/>"+(locals.err?locals.err:"")%>
+
+                </div>
+            </main>
+
+
+            <% include footer %>
+    </body>
+
+</html>
+
+<script>
+    function validateForm() {
+        var nume1 = document.getElementById("parola").value;
+        var nume2 = document.getElementById("rparola").value;
+
+        if (!(nume1 == nume2)) {
+            alert("Parolele nu coincid!");
+        }
+
+        var email = document.getElementById("email").value;
+        //console.log(email, email.match(new RegExp("^[a-zA-Z0-9_\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$")))
+
+        if (email.match(new RegExp("^[a-zA-Z0-9_\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$"))) {
+            alert("Email-ul nu corespunde cerintelor site-ului!");
+        }
+
+        return (nume1 == nume2 && email.match(new RegExp("^[a-zA-Z0-9_\\-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$")));
+    }
+</script>

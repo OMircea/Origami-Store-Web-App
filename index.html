@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content="width=device-width">
+        <meta name = "keywords" content="Lumea, Origami, Hartie, Distractie, Arta">
+        <meta name = "description" content="Magazin online care vinde Origami">
+        <meta name = "author" content="Oprea Mircea-Ioan">
+        <title> Lumea Origami</title>
+        <link rel="icon" href="resurse/imagini/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="resurse/stiluri/index.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&family=Turret+Road:wght@500&display=swap" rel="stylesheet">
+
+
+        <style>
+            th,td{
+                border:1px solid black;
+                padding:5px;
+            }
+            td:empty{
+                padding:20px;
+            }
+            table{
+                border-collapse:collapse;
+                empty-cells:show;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <header id="sus">    
+        <h1><img src="resurse/imagini/logo.png" alt="Lumea Origami" width="100" height="100"/> Lumea Origami </h1>
+        <br>
+
+
+
+        <nav>
+            <div class="mobile">
+
+            </div>
+
+
+            <div class="desktop">
+
+            <label id="hamburger" for="ch-menu">
+                <img src="resurse/imagini/hamburger.png" alt="menu">
+            </label>
+            <input id="ch-menu" type="checkbox"> 
+            <ul class="menu">
+
+                
+
+
+                <li><a class="word" href="#pg">Prezentare</a><a class="home"><i class="fas fa-home"></i></a></li>
+                <li><a href="produse.html">Produse</a></li>
+
+                <li>
+                    <label for="opt_galerii">
+                      Galerii
+                    </label>
+                    <input class="ch-submenu" type="checkbox" id="opt_galerii">
+                    <ul class="submenu">
+                      <li><a href="produse.html">Statica</a></li>
+                      <li><a href="#galerie-animata">Animatie</a></li>
+                    </ul>
+                  </li>
+                <li><a href="#oferte">Oferte</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        </nav>
+
+
+
+    </header>
+    
+
+    
+        <section id="pg">
+            <h2>Prezentare Generala</h2>
+
+            <video controls="controls" width="250" height="250">
+                <source src="resurse/video/bav.mp4" type="video/mp4"/>
+                <track label="Romanian" kind="captions" lang="ro" srclang="ro" src="data:image/png;base64,V0VCVlRUIC0gTHVtZWEgT3JpZ2FtaQ0KDQpTVFlMRQ0KOjpjdWV7DQogICAgYmFja2dyb3VuZDogd2hpdGU7DQogICAgY29sb3I6IGJsYWNrOw0KICAgIGFsaWduOiBtaWRkbGU7DQogICAgbGluZTogMDsNCn0NCg0KMDA6MDAuMDAwIC0tPiAwMDowMy4wMDAgbGluZTowIGFsaWduOm1pZGRsZQ0KQmluZSBhdGkgdmVuaXQgbGEgPGk+THVtZWEgT3JpZ2FtaSE8L2k+DQoNCjAwOjAzLjAwMCAtLT4gMDA6MTAuMDAwIGxpbmU6MCBhbGlnbjptaWRkbGUNCkRhY2EgdmEgcGxhY2UsIG51IHVpdGF0aSBzYSBuZSBsYXNhdGkgc2kgdW4gcmV2aWV3IQ0KDQo=" default>
+            </video>
+
+            <audio controls>
+                <source src="resurse/audio/audio.ogg" type="audio/ogg" >
+                <source src="resurse/audio/audio.mp3" type="audio/mpeg" >
+            </audio>
+
+            <blockquote>Origami constituie arta plierii hârtiei colorate în modele de creaturi vii, obiecte neînsuflețite 
+                sau forme decorative abstracte. Lumea artelor tradiționale japoneze a reprezentat întotdeauna pentru occidentali o 
+                fascinație, iar discipline precum ikebana – arta aranjării florilor, chanoyu – ceremonia ceaiului, origami – arta 
+                plierii hârtiei și multe altele au simbolizat elemente ale frumuseții și perfecțiunii japoneze.
+                Există multe stiluri de origami, acestea pornind de la cele mai simple compoziții până la compoziții extraordinar 
+                de complexe, alcătuite din mai multe unități origami pentru a forma un poliedru, precum și reprezentări formate din 
+                două sau mai multe coli de hârtie. Cu toate aceste multe forme de abordare, cele mai simple forme de origami sunt 
+                modelele formate dintr-un pătrat de hârtie, fără a utiliza lipiciul.
+                Se pot folosi diferite feluri de hârtie, de la cea subțire la cea groasă, precum și hârtia velină a revistelor sau hârtia de împachetat.
+            
+            </blockquote>
+            <p>Text preluat de pe <cite><a href="https://ro.wikipedia.org/wiki/Origami">Wikipedia</a> </cite></p>
+
+            <aside> Magazinul nostru are ca scop promovarea acestei forme de arta, promitand, in acelasi timp, <b>preturi mici si accesibile pentru toti.</b> </aside>
+            <br>
+            <!-- <img src="logo2.jpg" alt="logo2" width="300" height="220"/> -->
+
+            <picture>
+                <source media="(min-width:650px)" srcset="resurse/imagini/logo2.jpg">
+                <source media="(min-width:465px)" srcset="resurse/imagini/logo4.jpg">
+                <img src="resurse/imagini/logo3.jpg" alt="Logo-uri" style="width:auto;">
+            </picture>
+
+        </section>
+
+        <br>
+
+        <section id="produse">
+            <h2>Produse</h2>
+            <br>
+            <div id="counter">
+                <span class="fas fa-paper-plane">Magazinul nostru are o gama <em>variata</em> de produse din care puteti alege!
+                    
+                     Cele mai populare dintre acestea sunt:</span>
+                    <p>Avion</p>
+                    <p>Inima</p>
+                    <p>Iepure</p>
+            </div>
+            
+        </section>
+
+        <br>
+
+        <section id="oferte">
+            <h2>Oferte</h2>
+            <p>Desi preturile noastre sunt foarte atractive, avem cateva seturi de <b>oferte</b> pentru clientii nostri</p>
+
+            <table>
+                <thead>
+                <tr>
+                    
+                    <th></th><th></th>
+                    <th>Valoare reducere</th>
+                    <th>Puncte de fidelitate</th>
+                    
+                   </tr>
+                </thead>
+
+                   <tbody>
+                   <tr>
+                    <th rowspan="2">Origami normal simplu</th>
+                    <th>2 sau mai multe produse</th>
+                    <td style="text-align:center">5%</td>
+                    <td style="text-align:center">100</td>
+                   </tr>
+                   <tr>
+                    <th>5 sau mai multe produse</th>
+                    <td style="text-align:center">10%</td>
+                    <td style="text-align:center">150</td>
+                    
+                   </tr>
+                   <tr>
+                    <th rowspan="2">Origami normal complex</th>
+                    <th>2 sau mai multe produse</th>
+                    <td style="text-align:center">15%</td>
+                    <td style="text-align:center">200</td>
+                   </tr>
+                   <tr>
+                    <th>5 sau mai multe produse</th>
+                    <td style="text-align:center">20%</td>
+                    <td style="text-align:center">250</td>
+                   </tr>
+
+                   <tr>
+                    <th rowspan="2">Origami 3d simplu</th>
+                    <th>2 sau mai multe produse</th>
+                    <td style="text-align:center">25%</td>
+                    <td style="text-align:center">300</td>
+                   </tr>
+                   <tr>
+                    <th>5 sau mai multe produse</th>
+                    <td style="text-align:center">30%</td>
+                    <td style="text-align:center">350</td>
+                    
+                   </tr>
+
+                   <tr>
+                    <th rowspan="2">Origami 3d complex</th>
+                    <th>2 sau mai multe produse</th>
+                    <td style="text-align:center">35%</td>
+                    <td style="text-align:center">400</td>
+                   </tr>
+                   <tr>
+                    <th>5 sau mai multe produse</th>
+                    <td style="text-align:center">40%</td>
+                    <td style="text-align:center">450</td>
+                    
+                   </tr>
+                </tbody>
+            </table>
+            <br>
+            <aside> Pentru a fi la curent cu toate reducerile si codurile promotionale, va puteti abona la <b>newsletter-ul</b> nostru.</aside>
+    
+
+        </section>
+
+        <section id="program">
+            <h2 class="fas fa-calendar">Program</h2>
+            <p>Luni-Duminica: 10:00 - 18:00</p>
+            <p>Incepand cu data de <time datetime="2020-10-23 12:00">23 octombrie</time> puteti comanda si prin telefon.</p>
+
+        </section>
+
+        <section id="contact">
+            <h2 class="fas fa-phone">Contact</h2>
+            <p>Ne puteti <em>scrie</em> la adresa de email <a href = "mailto:oprea.mirceaioan@gmail.com">oprea.mirceaioan@gmail.com</a></p>
+        </section>
+        
+
+        <footer style="text-align:center">
+            <div class="animation">
+                <h1>DISCLAIMER: Site-ul este un proiect școlar!</h1>
+            </div>
+            
+            <address> Mihai Viteazul Nr.17</address>
+            Oprea Mircea-Ioan
+            <br>
+            &copy; Copyright 2020 lumeaorigami.ro
+            <br>
+            <a href="#sus">Inapoi la start!</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+WEBVTT - Lumea Origami
+
+STYLE
+::cue{
+    background: white;
+    color: black;
+    align: middle;
+    line: 0;
+}
+
+00:00.000 --> 00:03.000 line:0 align:middle
+Bine ati venit la <i>Lumea Origami!</i>
+
+00:03.000 --> 00:10.000 line:0 align:middle
+Daca va place, nu uitati sa ne lasati si un review!
+

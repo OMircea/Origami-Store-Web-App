@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+
+td,
+th {
+    border: 1px solid #dddddd !important;
+    text-align: left !important;
+    padding: 8px !important;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd !important;
+}
+
+.acvatic {
+    text-decoration: dotted;
+    color: cyan;
+    background-color: blue;
+}
+
+b {
+    background-color: yellow !important;
+}
+
+td:nth-child(2) {
+    background-color: yellowgreen !important;
+}

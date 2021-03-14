@@ -1,0 +1,45 @@
+#galerie_animata figure:nth-of-type(1) {
+  animation-delay: 30s;
+}
+
+#galerie_animata figure:nth-of-type(2) {
+  animation-delay: 27s;
+}
+
+#galerie_animata figure:nth-of-type(3) {
+  animation-delay: 24s;
+}
+
+#galerie_animata figure:nth-of-type(4) {
+  animation-delay: 21s;
+}
+
+#galerie_animata figure:nth-of-type(5) {
+  animation-delay: 18s;
+}
+
+#galerie_animata figure:nth-of-type(6) {
+  animation-delay: 15s;
+}
+
+#galerie_animata figure:nth-of-type(7) {
+  animation-delay: 12s;
+}
+
+#galerie_animata figure:nth-of-type(8) {
+  animation-delay: 9s;
+}
+
+#galerie_animata figure:nth-of-type(9) {
+  animation-delay: 6s;
+}
+
+#galerie_animata figure:nth-of-type(10) {
+  animation-delay: 3s;
+}
+
+#galerie_animata figure:nth-of-type(11) {
+  animation-delay: 0s;
+}
+
+/*# sourceMappingURL=galerie.css.map */

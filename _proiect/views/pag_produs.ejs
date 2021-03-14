@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<% include head %>
+
+    <body>
+        <% include header %>
+            <main>
+                <h2> Pagina produsului</h2>
+                <p>
+                    <%- include('produs_detaliat', {produs: locals.produs_unic}) %>
+                </p>
+            </main>
+
+            <% include footer %>
+    </body>
+
+</html>

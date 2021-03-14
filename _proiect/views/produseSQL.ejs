@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<% include head %>
+
+    <body>
+
+        <% include header %>
+
+            <main>
+                <br><br><br><br>
+                <label>Pret minim:
+                    5<input type="range" id="i_pret" min="5" step="5" max="200" value="5">200 (selectat: <span id="info_range">5</span>)
+                </label>
+                <br>
+                <label>Culoare
+                <input type="text" id ="i_culoare" class = "r">
+                 </label>
+                <br>
+                <label>Categorie</label><br>
+                <input type="radio" id="nimic" name="cat" value="nimic" class="r default_checked" checked="checked">
+                <label for="nimic"><i>fara preferinte</i></label><br>
+
+                <input type="radio" id="acvatic" name="cat" value="acvatic">
+                <label for="acvatic">Acvatic</label><br>
+
+                <input type="radio" id="terestru" name="cat" value="terestru">
+                <label for="terestru">Terestru</label><br>
+
+                <input type="radio" id="aerian" name="cat" value="aerian">
+                <label for="aerian">Aerian</label><br>
+
+                <label for="mesaj">Cuvant descriere</label>
+                <textarea id="mesaj" name="mesaj" rows="1" cols="30" class="r"></textarea><br>
+                <label>In stoc:
+                    <input type="checkbox" id="i_stoc" class = "r">
+                </label>
+                <br>
+
+                <label for="culoare_select_simplu">Culoare: </label>
+                <select id="culoare_select_simplu" name="lista_culori_simplu" form="culoare_form_simplu" class="r">
+                    <option value="nimic" selected = "selected" ><i>nimic</i></option>
+                    <option value="portocaliu">portocaliu</option>
+                    <option value="gri">gri</option>
+                    <option value="roz">roz</option>
+                    <option value="verde">verde</option>
+                    <option value="alb">alb</option>
+                    <option value="albastru">albastru</option>
+                    <option value="galben">galben</option>
+                </select>
+                <br>
+                <label for="tehnici_folosite__select_multiplu">Tehnici folosite: </label>
+                <select id="tehnici_folosite__select_multiplu" name="lista_tehnici_folosite_multiplu" form="tehnici_folosite_form_multiplu" multiple>
+                    <option value="compound_fold">compound fold</option>
+                    <option value="mountain_fold">mountain fold</option>
+                    <option value="valley_fold">valley fold</option>
+                    <option value="squash_fold">squash fold</option>
+                    <option value="bird_base">bird base</option>
+                    <option value="open_sink">open sink</option>
+                    <option value="fish _fold">fish fold</option>
+
+                </select>
+                <br>
+
+                <label></label>
+                <button id="filtrare">Filtreaza</button>
+
+                <button id="reset" onclick="resetFields()">Reset</button>
+
+                <button id="calculeaza" onclick="suma()"> Pretul articolelor selectate</button>
+
+                <button id="sort_num">Sorteaza alfabetic (si crescator dupa pret)</button>
+
+                <button id="sort_num_desc">Sorteaza alfabetic (si descrescator dupa pret)</button>
+
+                <section id="produse">
+                    <h2>Produse</h2>
+                    <% for (let i=0; i<produse.length; i++) { %>
+
+                        <%- include('produs', {produs: produse[i]}) %>
+
+                            <% } %>
+                </section>
+            </main>
+            <% include footer %>
+    </body>
+
+</html>
+
+<script>
+    window.onload = function() {
+        document.getElementById("filtrare").onclick = function() {
+            var pret = parseInt(document.getElementById("i_pret").value);
+            var culoare = document.getElementById("i_culoare").value;
+            var categorie = ""
+            var radios = document.getElementsByName('cat');
+            var cuv_descriere = document.getElementById('mesaj').value.toLowerCase()
+
+
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    categorie = radios[i].value;
+                    break;
+                }
+            }
+            var in_stoc = document.getElementById("i_stoc").checked ? "in stoc" : "nu e in stoc";
+
+            let selectElement = document.getElementById('tehnici_folosite__select_multiplu')
+            let tehnici_folosite = Array.from(selectElement.selectedOptions)
+                .map(option => option.innerHTML)
+
+            console.log(pret, culoare, categorie, in_stoc, tehnici_folosite)
+
+            var produse = document.querySelectorAll("#produse article");
+            for (var prod of produse) {
+                prod.style.display = "block";
+                var pret_produs = parseInt(prod.getElementsByClassName("pret")[0].innerHTML)
+                var culoare_produs = prod.getElementsByClassName("culoare")[0].innerHTML
+                var categorie_produs = prod.getElementsByClassName("categorie")[0].innerHTML
+                var disponibilitate_produs = prod.getElementsByClassName("disponibilitate")[0].innerHTML
+                var tehnici_folosite_produs = prod.getElementsByClassName("tehnici_folosite")[0].innerHTML.split(', ')
+                var cuv_descriere_produs = prod.getElementsByClassName("descriere")[0].innerHTML.toLowerCase().includes(cuv_descriere)
+
+                var ok = true;
+                //ok &= ((pret_produs >= pret) && (culoare == culoare_produs) && (categorie == categorie_produs) && (in_stoc == disponibilitate_produs))
+                if (tehnici_folosite.length > 0) {
+                    var ok2 = false;
+                    for (var tehnica of tehnici_folosite_produs) {
+                        ok2 = ok2 || tehnici_folosite.includes(tehnica)
+                    }
+                    ok = ok2
+                    console.log(ok);
+                }
+
+
+                if (pret_produs <= pret) {
+                    ok = false;
+                }
+
+                if (culoare != '') {
+                    if (/\d/.test(culoare)) {
+                        alert("Culoarea nu poate contine cifre!");
+                        return
+                    }
+                    if (culoare != culoare_produs) {
+                        ok = false;
+                    }
+                }
+
+                if (categorie != "nimic") {
+                    if (categorie != categorie_produs) {
+                        ok = false;
+                    }
+                }
+
+                if (in_stoc != disponibilitate_produs) {
+                    ok = false;
+                }
+
+                if (!cuv_descriere_produs) {
+                    ok = false;
+                }
+
+                if (!ok) {
+                    prod.style.display = "none"
+                    prod.classList.remove("valid")
+                } else {
+                    prod.style.display = "block"
+                    prod.classList.add("valid")
+                }
+            }
+
+
+        }
+
+
+        document.getElementById("sort_num").onclick = function() {
+
+            var prodClassName = document.getElementsByClassName("valid")
+
+            var v_prodClassName = Array.from(prodClassName)
+
+            v_prodClassName.sort(function(a, b) {
+                if (a.getElementsByClassName("categorie")[0].innerHTML.localeCompare(b.getElementsByClassName("categorie")[0].innerHTML) == 0) {
+                    return parseInt(a.getElementsByClassName("pret")[0].innerHTML) - parseInt(b.getElementsByClassName("pret")[0].innerHTML)
+                } else {
+                    return a.getElementsByClassName("categorie")[0].innerHTML.localeCompare(b.getElementsByClassName("categorie")[0].innerHTML)
+                }
+            })
+            for (let i = 0; i < v_prodClassName.length; i++) {
+                v_prodClassName[i].parentElement.appendChild(v_prodClassName[i])
+
+            }
+
+        }
+
+        document.getElementById("sort_num_desc").onclick = function() {
+
+            var prodClassName = document.getElementsByClassName("valid")
+
+            var v_prodClassName = Array.from(prodClassName)
+            v_prodClassName.sort(function(a, b) {
+                if (a.getElementsByClassName("categorie")[0].innerHTML.localeCompare(b.getElementsByClassName("categorie")[0].innerHTML) == 0) {
+                    return -(parseInt(a.getElementsByClassName("pret")[0].innerHTML) - parseInt(b.getElementsByClassName("pret")[0].innerHTML))
+                } else {
+                    return a.getElementsByClassName("categorie")[0].innerHTML.localeCompare(b.getElementsByClassName("categorie")[0].innerHTML)
+                }
+            })
+            for (let i = 0; i < v_prodClassName.length; i++) {
+                v_prodClassName[i].parentElement.appendChild(v_prodClassName[i])
+            }
+        }
+
+        document.getElementById("i_pret").onchange = function() {
+            document.getElementById("info_range").innerHTML = this.value;
+        }
+    }
+
+    function resetFields() {
+
+        Array.from(document.getElementsByClassName("r")).forEach(el => {
+            console.log("am intrat", el);
+            window.debug = el;
+            if (el.type == 'text' || el.type == 'textarea') {
+                el.value = '';
+                el.innerHTML = '';
+            }
+
+            if (el.type == 'radio') {
+                el.checked = el.classList.contains('default_checked')
+            }
+            if (el.type == 'checkbox') {
+                el.checked = false;
+            }
+
+            if (el.tagName == 'SELECT') {
+                el.value = "nimic";
+            }
+        })
+
+        var produse = document.querySelectorAll("#produse article");
+        for (var prod of produse) {
+            prod.style.display = "block";
+
+        }
+    }
+
+    function suma() {
+        var x = document.getElementsByClassName("valid")
+        var suma = 0
+        for (var prod of x) {
+            suma += parseInt(prod.getElementsByClassName("pret")[0].innerHTML)
+        }
+        alert(suma);
+    }
+</script>

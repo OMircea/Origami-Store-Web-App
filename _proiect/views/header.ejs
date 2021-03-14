@@ -1,0 +1,120 @@
+<header id="sus">
+    <h1><img src="/resurse/imagini/logo.png" alt="Lumea Origami" width="100" height="100" /> Lumea Origami </h1>
+    <br>
+
+    <nav id="sal">
+        <label id="hamburger" for="ch-menu">
+            <img src="/resurse/imagini/hamburger.png" alt="menu">
+        </label>
+        <input id="ch-menu" type="checkbox">
+
+        <ul class="menu">
+
+            <li><a onclick="highlight(this);" class="word" scrollto="#pg" href="/">Prezentare</a><a scrollto="#pg" class="home"><i class="fas fa-home"></i></a></li>
+            <li><a onclick="highlight(this);" href="/produse">Produse</a></li>
+
+            <li>
+                <label onclick="highlight(this);" for="opt_galerii">
+                    Galerii
+                </label>
+                <input class="ch-submenu" type="checkbox" id="opt_galerii">
+                <ul class="submenu">
+                    <li><a href="/produse">Statica</a></li>
+                    <li><a href="/galerie_animata">Animatie</a></li>
+                </ul>
+            </li>
+            <li><a onclick="highlight(this);" scrollto="#oferte">Oferte</a></li>
+            <li><a onclick="highlight(this);" scrollto="#program">Program</a></li>
+            <li><a onclick="highlight(this);" scrollto="#contact">Contact</a></li>
+            <% if (!locals.utilizator) { %>
+                <li><a href="/inregistrare">Inregistrare User</a></li>
+                <% } %>
+                    <% if (locals.utilizator && locals.utilizator.rol == "admin") { %>
+                        <li><a href="/utilizatori">Utilizatori</a></li>
+                        <% } %>
+        </ul>
+        <input type="image" src="/resurse/imagini/sun.jpg" style="width: 30px; height: 30px;" allign="right;" id="lightDarkTheme" onclick="myFunction();">
+    </nav>
+
+
+    <% if (!locals.utilizator) { %>
+        <p>Login:</p> <br>
+        <form id="login" method="post" action="/login" enctype="application/x-www-form-urlencoded">
+
+            <label>
+                    Username: <input type="text" name="username" value="user">
+                </label>
+            <br>
+            <label>
+                    Parola: <input type="password" name="parola" value="">
+                </label>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <% }  else {%>
+
+            <h1 title="<%= locals.utilizator.prenume + ' '  + locals.utilizator.nume %> ">User: [
+                <%=locals.utilizator.username %> ]</h1>
+            <br>
+            <img src="/<%= locals.utilizator.username %>/<%= locals.utilizator.imagine %>" />
+            <button onclick="window.location.href='/logout'">Log-out</button>
+            <% } %>
+
+
+
+
+                <script>
+                    Array.from(document.querySelectorAll("nav a")).forEach(function(element) {
+                        element.addEventListener("click", function(ev) {
+                            var id = this.getAttribute("scrollto").replace("#", "")
+                            console.log(id);
+                            document.getElementById(id).scrollIntoView({
+                                block: 'start',
+                                behavior: 'smooth'
+                            });
+                        })
+                    })
+
+                    document.getElementById("sal").onmouseleave = function(ev) {
+                        if (Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) <= 400) {
+                            document.getElementById("ch-menu").checked = false;
+                        }
+                    }
+
+                    document.body.style.backgroundColor = localStorage.getItem('bg');
+                    document.body.style.color = localStorage.getItem('cc');
+                    document.getElementById('lightDarkTheme').src = localStorage.getItem('ig');
+
+                    function myFunction() {
+                        if (localStorage.getItem('bg') === 'rgb(255, 255, 255)') {
+                            localStorage.setItem('bg', 'rgb(6, 23, 37)');
+                            localStorage.setItem('cc', 'white');
+                            localStorage.setItem('ig', '/resurse/imagini/sun.jpg');
+                        } else if (localStorage.getItem('bg') == null || undefined) {
+                            localStorage.setItem('bg', 'rgb(6, 23, 37)');
+                            localStorage.setItem('cc', 'white');
+                            localStorage.setItem('ig', '/resurse/imagini/sun.jpg');
+                        } else if (localStorage.getItem('bg') === 'rgb(6, 23, 37)') {
+                            localStorage.setItem('bg', 'rgb(255, 255, 255)');
+                            localStorage.setItem('cc', 'black');
+                            localStorage.setItem('ig', '/resurse/imagini/moon.jpg');
+                        }
+
+                        document.body.style.backgroundColor = localStorage.getItem('bg');
+                        document.body.style.color = localStorage.getItem('cc');
+                        document.getElementById('lightDarkTheme').src = localStorage.getItem('ig');
+                    }
+
+
+                    var current = document.getElementById('default');
+
+                    function highlight(el) {
+                        if (current != null) {
+                            current.className = "";
+                        }
+                        el.className = "highlight";
+                        current = el;
+                    }
+                </script>
+
+</header>
